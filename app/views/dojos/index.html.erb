@@ -1,14 +1,19 @@
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" 
+  rel="stylesheet" >
+
 <p id="notice"><%= notice %></p>
 
 <h1>Dojos</h1>
 
-<table>
+<table id="mytable" class= "table">
   <thead>
     <tr>
       <th>Name</th>
       <th>City</th>
       <th>State</th>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,9 +23,9 @@
         <td><%= dojo.name %></td>
         <td><%= dojo.city %></td>
         <td><%= dojo.state %></td>
-        <td><%= link_to 'Show', dojo %></td>
-        <td><%= link_to 'Edit', edit_dojo_path(dojo) %></td>
-        <td><%= link_to 'Destroy', dojo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', dojo, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Editar', edit_dojo_path(dojo), class: "btn btn-secondary" %></td>
+        <td><%= link_to 'Eliminar', dojo, method: :delete, data: { confirm: 'Esta seguro?', class: "btn btn-danger" } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +33,18 @@
 
 <br>
 
-<%= link_to 'New Dojo', new_dojo_path %>
+<%= link_to 'Nuevo Dojo', new_dojo_path %>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script 
+src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#myTable').DataTable({
+      language: {
+        url: "//cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json"
+      }
+    });
+  });
+</script>
